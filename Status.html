@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Status</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		/* class Hello extends React.Component{
+			constructor(){
+				super();
+				this.state = {
+					now: 1,
+				};
+			}
+			
+			changeStatus(){
+				this.setState({now: this.state.now + 1});
+			}
+			
+			render(){
+				return (
+					<div>
+						<div onClick={() => this.changeStatus()}> ChangeStatus</div>
+						<h1>Hello at {this.state.now}</h1>
+					</div>);
+			}
+		} */
+		
+		var Hello = React.createClass({
+			getInitialState: function(){
+				return {now: 1};
+			},
+			
+			changeStatus: function(){
+				this.setState({now: this.state.now + 1});
+			},
+			
+			render: function(){
+				return (
+					<div>
+						<div onClick={() => this.changeStatus()}> ChangeStatus</div>
+						<h1>Hello at {this.state.now}</h1>
+					</div>);
+			}
+		});
+		
+		ReactDOM.render(<Hello />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>

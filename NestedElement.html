@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Composing Component</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    	class Inner extends React.Component{
+    		render(){
+    			return (
+    				<p>inner text: {this.props.subTitle}</p>
+    			);
+    		};
+    	}
+    	
+		var Outter = React.createClass({
+			render: function(){
+			return <div>
+				    <h1> 
+				    	Hello at {this.props.now}
+				    	<br/>
+				    	<Inner subTitle="First Title" />
+				    	{this.props.innerTitles.map((t, i) => {
+				    		return <Inner subTitle={t} key={i} />
+				    	})}
+				    </h1>
+				</div>;
+			}
+		});
+		
+		ReactDOM.render(
+			<Outter now={new Date().toString()} 
+				innerTitles = {["Title1", "Title2", "Title3"]} />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>

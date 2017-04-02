@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Validating Props</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel"> 
+    	/*
+		var Child = React.createClass({			
+			propTypes: {
+				now: function(props, propName, componentName){
+					if (props[propName]  > 5){
+						return new Error("now property cannot be greater than 5.");
+					}
+				},
+				
+				text: React.PropTypes.string.isRequired,
+			},
+			
+			render: function(){
+				return (
+					<div>
+						<h1>Hello {this.props.text}</h1>
+						<h2>at {this.props.now}</h2>
+					</div>);
+			}
+		}); */
+		
+		class Child extends React.Component{
+			
+			static propTypes = {
+				now: function(props, propName, componentName){
+					if (props[propName]  > 5){
+						return new Error("now property cannot be greater than 5.");
+					}
+				},
+		
+				text: React.PropTypes.string.isRequired,
+			}
+			
+			render(){
+				return (
+					<div>
+						<h1>Hello {this.props.text}</h1>
+						<h2>at {this.props.now}</h2>
+					</div>);
+			}
+		}
+		
+		class Parent extends React.Component{		
+			constructor(){
+				super();
+				this.state = {
+					now: 1,
+					text: 'World!'
+				}
+			}
+			
+			changeStatus() {
+				this.setState({now: this.state.now + 1});
+			}
+			
+			render(){
+				return (
+					<div onClick={() => this.changeStatus()}> ChangeStatus
+					<Child now={this.state.now} text={this.state.text} /> 
+					</div>
+					
+				);
+			}
+		}
+		
+		ReactDOM.render(<Parent />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>

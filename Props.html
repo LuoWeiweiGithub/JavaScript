@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Props</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		class Hello extends React.Component{
+			constructor(){
+				super();
+				this.now = 1;
+			}
+			
+			changeProps(){
+				this.now = this.now + 1;
+			}
+			
+			render(){
+				return (
+					<div>
+						<div onClick={() => this.changeProps()}> changeProps</div>
+						<h1>Hello at {this.now}</h1>
+					</div>);
+			}
+		}
+		ReactDOM.render(<Hello />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>
