@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Basic Example</title>
+    <title>Rendering Element</title>
     <script src="./lib/react.js"></script>
     <script src="./lib/react-dom.js"></script>
     <script src="./lib/babel.min.js"></script>
@@ -10,14 +10,8 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-		var Hello = React.createClass({
-			render: function(){
-			return <div>
-				    <h1> Hello at {this.props.now}</h1>
-				</div>;
-			}
-		});
-		ReactDOM.render(<Hello now={new Date().toString()} />, 
+		var hello = <h1> Hello world! {props.value}</h1>;
+		ReactDOM.render(hello, 
 			document.getElementById("root"));
     </script>
   </body>

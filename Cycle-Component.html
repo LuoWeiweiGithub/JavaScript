@@ -13,7 +13,9 @@
     	class Inner extends React.Component{
     		render(){
     			return (
-    				<p>inner text: {this.props.subTitle}</p>
+    				<p>inner text: {this.props.subTitle}
+						<Outter now={new Date().toString()} />    				
+    				</p>
     			);
     		};
     	}
@@ -24,17 +26,13 @@
 				    <h1>  Hello at {this.props.now}
 				    	<br/>
 				    	<Inner subTitle="First Title" />
-				    	{this.props.innerTitles.map((t, i) => {
-				    		return <Inner subTitle={t} key={i} />
-				    	})}
 				    </h1>
 				</div>;
 			}
 		}
 		
 		ReactDOM.render(
-			<Outter now={new Date().toString()} 
-				innerTitles = {["Title1", "Title2", "Title3"]} />, 
+			<Outter now={new Date().toString()} />, 
 			document.getElementById("root"));
     </script>
   </body>

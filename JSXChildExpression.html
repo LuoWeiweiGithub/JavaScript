@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Basic Example</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		var First = React.createClass({
+		  render: function () {
+			return <p>1st</p>;
+		  }
+		});
+
+		var Second = React.createClass({
+		  render: function () {
+			return <p>2nd</p>;
+		  }
+		});
+
+		var Appender = React.createClass({
+		  render: function () {
+			return <div className="appender">{this.props.children}</div>;
+		  }
+		});
+
+		ReactDOM.render(
+		  <Appender>
+			<First />
+			<Second />
+		  </Appender>, document.getElementById("root"));
+    </script>
+  </body>
+</html>

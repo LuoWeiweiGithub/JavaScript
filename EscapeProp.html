@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Escape</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		var DangerContainer = React.createClass({
+		  render: function () {
+			return <p dangerouslySetInnerHTML={{__html: this.props.dangerous}}></p>;
+			// return <p>{this.props.dangerous}</p>;
+		  }
+		});
+
+		ReactDOM.render(<DangerContainer dangerous="<strong>HELLO</strong>" />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

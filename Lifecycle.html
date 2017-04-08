@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Basic Example1</title>
+    <script src="./lib/react.js"></script>
+    <script src="./lib/react-dom.js"></script>
+    <script src="./lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		class Clock extends React.Component{
+			constructor(){
+				super();
+				this.state = {date: new Date()};			
+			}
+			
+			componentDidMount(){
+				this.timerId = setInterval(
+					() => this.tick(),
+					4000				
+				)		
+			}
+			
+			tick(){
+				this.setState({date: new Date()})			
+			}
+			
+			componentWillUnmount(){
+				clearInterval(this.timerId);			
+			}		
+			
+			render(){
+				return (<div>
+							<h1>Hello at {this.state.date.toString()}.</h1>
+						</div>);
+			}
+		}
+		ReactDOM.render(<Clock />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>
