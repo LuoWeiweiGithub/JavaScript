@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Refs</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		class CustomTestInput extends React.Component {
+			constructor (){
+				super();
+				this.focus = this.focus.bind(this);
+			}
+
+			focus() {
+				this.textInput.focus();
+			}
+
+			render(){
+				return (<div>
+					<input type="text" ref={(input) => {this.textInput = input;}} />
+					<input type="text" />
+					<input type="button" value="Focus" onClick={this.focus} />
+				</div>);
+			}
+		}
+
+		ReactDOM.render(<CustomTestInput />, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>

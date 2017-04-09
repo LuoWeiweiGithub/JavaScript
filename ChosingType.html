@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Basic Example</title>
+    <script src="./lib/react.js"></script>
+    <script src="./lib/react-dom.js"></script>
+    <script src="./lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		class Linux extends React.Component {
+      render (){
+        return <div>start {this.props.value} in linux.</div>
+      }
+    }
+
+    class Windows extends React.Component {
+      render () {
+        return <div>start {this.props.value} in windows</div>
+      }
+    }
+
+    const operatorSystems = {
+      linux: Linux,
+      windows: Windows
+    };
+
+    const SpecifiedOperatorSystem = operatorSystems['linux'];
+
+		ReactDOM.render(<SpecifiedOperatorSystem value={'react'} />, 
+			document.getElementById("root")); 
+
+    /* const specifiedOperatorSystem = operatorSystems['linux'];
+
+    ReactDOM.render(<specifiedOperatorSystem value={'react'} />, 
+      document.getElementById("root"));  */
+    </script>
+  </body>
+</html>

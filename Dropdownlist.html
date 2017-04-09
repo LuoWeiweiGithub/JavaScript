@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdownlist</title>
+    <script src="lib/react.js"></script>
+    <script src="lib/react-dom.js"></script>
+    <script src="lib/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+		var element = (<select value='two'>
+				<option value="one">1</option>
+				<option value="two">2</option>
+				<option value="three">3</option>
+			</select>);
+
+		ReactDOM.render(element, 
+			document.getElementById("root"));
+    </script>
+  </body>
+</html>
